@@ -1,0 +1,31 @@
+{
+    "GlobalConfiguration": {
+      "BaseUrl": "https://localhost:7000"
+    },
+    "Routes": [
+      {
+        "UpstreamPathTemplate": "/api/tours",
+        "UpstreamHttpMethod": [ "Get" ],
+        "DownstreamPathTemplate": "/tours",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7100
+          }
+        ]
+      },
+      {
+        "UpstreamPathTemplate": "/api/tours",
+        "UpstreamHttpMethod": [ "Post"],
+        "DownstreamPathTemplate": "/tours",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7100
+          }
+        ]
+      }
+    ]
+  }
