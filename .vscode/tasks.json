@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/GoGo.Gateway/GoGo.GateWay.csproj",
+                "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/GoGo.Gateway/GoGo.GateWay.csproj",
+                "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,9 +33,69 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/src/GoGo.Gateway/GoGo.GateWay.csproj"
+                "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "apiGateway:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/src/GoGo.Gateway/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "apiGateway:latest",
+                "dockerfile": "${workspaceFolder}/src/GoGo.Gateway/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {
+                "os": "Windows"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {
+                "os": "Windows"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/GoGo.Gateway/GoGo.Gateway.csproj"
+            }
         }
     ]
 }

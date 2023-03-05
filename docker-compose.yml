@@ -1,0 +1,12 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  gogogateway:
+    image: gogogateway
+    build:
+      context: .
+      dockerfile: src/GoGo.GateWay/Dockerfile
+    ports:
+      - 7000:7000
