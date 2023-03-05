@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "GoGo.GateWay": {
+    "GoGo.Gateway": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
