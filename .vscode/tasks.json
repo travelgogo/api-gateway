@@ -44,7 +44,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "apiGateway:dev",
+                "tag": "apigateway:dev",
                 "target": "base",
                 "dockerfile": "${workspaceFolder}/src/GoGo.Gateway/Dockerfile",
                 "context": "${workspaceFolder}",
@@ -61,7 +61,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "apiGateway:latest",
+                "tag": "apigateway:latest",
                 "dockerfile": "${workspaceFolder}/src/GoGo.Gateway/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true

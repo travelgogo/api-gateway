@@ -1,16 +1,16 @@
 {
     "GlobalConfiguration": {
-      "BaseUrl": "https://localhost:7000"
+      "BaseUrl": "http://localhost:7000"
     },
     "Routes": [
       {
         "UpstreamPathTemplate": "/api/pds/{rest}",
         "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
         "DownstreamPathTemplate": "/{rest}",
-        "DownstreamScheme": "https",
+        "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "product.default",
             "Port": 7100
           }
         ]

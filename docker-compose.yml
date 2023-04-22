@@ -4,9 +4,9 @@ version: '3.4'
 
 services:
   gogogateway:
-    image: gogogateway
+    image: api-gateway
     build:
       context: .
-      dockerfile: src/GoGo.GateWay/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 7000:7000
